@@ -24,6 +24,6 @@ body {
   margin: 50px;
 }
 
-#my-canvas, #gameover-screen {
-  display:none;
+#my-canvas, #gameover-screen, #lost-btn {
+  display: none;
 }
