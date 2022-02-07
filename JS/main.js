@@ -20,17 +20,17 @@ const startGame = () => {
   // ejecutar mi juego (aqui esta todo lo que estamos creando)
   //let newGame = new Game(); //al poner la variable global hay que eliminbar let
   let newGame = new Game();
-    newGame.gameLoop(); 
+  newGame.gameLoop(); 
 
 }
 
-const loseGame = () => {
-  canvas.style.display = "none";
-  loseBtn.style.display = "none";
-  gameOverScreen.style.display = "flex";
-  window.setTimeout(function(){location.reload()}, 4000);
+// const loseGame = () => {
+//   canvas.style.display = "none";
+//   loseBtn.style.display = "none";
+//   gameOverScreen.style.display = "flex";
+//   window.setTimeout(function(){location.reload()}, 4000);
 
-}
+// }
 
 // * ADD EVENT LISTENERS
 
