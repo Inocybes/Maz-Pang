@@ -24,6 +24,7 @@ class Game {
     // 1, Clean canvas
     this.cleanCanvas();
     // 2. move elements or other actions
+    
 
     // 3.  Draw los elements
     this.drawBackground();

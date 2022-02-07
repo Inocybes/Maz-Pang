@@ -4,11 +4,12 @@ class Player  {
     // character properties
 
     this.x = canvas.width/2;
-    this.y = canvas.height -95;
-    this.width = 70;
-    this.height = 70;
+    this.y = canvas.height -125;
+    this.width = 100;
+    this.height = 100;
     this.img = new Image();
     this.img.src = "./Images/MZ.png"
+    this.mzMarginWidth = 40;
   }
 
   // Methods
@@ -20,7 +21,21 @@ class Player  {
   }
 
   // 2. Movement
-  
+  mzMovement = (event) => {
+
+    if (event.key === "ArrowRight" && this.x <= canvas.width - this.width - this.mzMarginWidth) {
+      this.x = this.x + 10
+    } else if (event.key === "ArrowLeft" && this.x >= 0 + this.mzMarginWidth) {
+      this.x = this.x - 10
+    }
+    //console.log(event.key);
+
+
+    
+
+
+
+  }
 
 
 }
