@@ -1,10 +1,10 @@
-class Balls {
+class Ball {
 
-  constructor () {
+  constructor (x, directionX) {
     // properties
-    this.x = canvas.width/2;
+    this.x = x;
     this.y = -20;
-    this.directionX = 1;
+    this.directionX = directionX;
     this.directionY = 1;
     this.width = 50;
     this.height = 50;
@@ -15,7 +15,7 @@ class Balls {
   // Methods
 
   // 1. Draw
-  drawBigBalls = () => {
+  drawBigBall = () => {
 
     ctx.drawImage(this.imgBall, this.x, this.y, this.width, this.height)
 
@@ -29,7 +29,7 @@ class Balls {
 
   // 2. Movement
   
-  ballsMovement = () => {
+  ballMovement = () => {
     
     this.x = this.x + (1 *this.directionX);
     

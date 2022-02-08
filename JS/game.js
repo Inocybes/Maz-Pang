@@ -6,10 +6,10 @@ class Game {
     this.bg = new Image();
     this.bg.src = "./images/background.png";
     this.player = new Player();
-    this.balls = new Balls()
-    //this.ballArr = [new Balls()]
+    this.ballArr = [new Ball((canvas.width/2), 1)]
     this.ballCollision = 75
     this.isGameOn = true;
+    this.punch = []
     
   }
 
@@ -17,47 +17,44 @@ class Game {
     ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height)
   }
 
-  ballsCanvasCollision = () => {
-    if ( this.balls.x > canvas.width - 70) {
-      this.balls.directionX = - 1;
+  ballCanvasCollision = (ball) => {
+    if (ball.x > canvas.width - 70) {
+      ball.directionX = - 1;
       
-    } else if ( this.balls.y > canvas.height - this.ballCollision) {
-      this.balls.directionY = - 1;
+    } else if (ball.y > canvas.height - this.ballCollision) {
+      ball.directionY = - 1;
 
-    } else if (this.balls.x < 0 + 15) {
-      this.balls.directionX = 1;
+    } else if (ball.x < 0 + 15) {
+      ball.directionX = 1;
       
-    } else if ( this.balls.y < 0 + 20) {
-      this.balls.directionY = 1;
+    } else if (ball.y < 0 + 20) {
+      ball.directionY = 1;
     }
   
   }
 
-  // spawningPipe = () => {
-
-  //   let lastPipe = this.pipeArr[this.pipeArr.length - 1];
-
-  //   if (lastPipe.x < (canvas.width) - this.pipeSeparation) {
-     
-  //     let randomY = (Math.random() * 100) - 100 
-  //     let newPipe = new Pipe(randomY, "./images/obstacle_top.png");
-  //     this.pipeArr.push(newPipe);
-
-     
-  //     let randomYDown = randomY + newPipe.height + 150     
-  //     let newPipeDown = new Pipe(randomYDown, "./images/obstacle_bottom.png"); 
-  //     this.pipeArr.push(newPipeDown);
-  //   }
+    spawningBall = () => {
+    setInterval (() => { //declarar funcion?
+    const x = Math.random() * (canvas.width - 0)
+    let directionX = Math.random() //* (1 - 0)
+    if (directionX === 0) {
+      directionX = -1;
+    }
+    const newBall = new Ball(x, directionX);
+    this.ballArr.push(newBall)
+    },10000);
+  }
+  
 
 
-  // }
+  
 
 
-  checkPlayerBallCollision = () => {
-    if (this.player.x < this.balls.x + this.balls.width &&
-      this.player.x + this.player.width > this.balls.x &&
-      this.player.y < this.balls.y + this.balls.height &&
-      this.player.height + this.player.y > this.balls.y) {
+  checkPlayerBallCollision = (ball) => {
+    if (this.player.x < ball.x + ball.width &&
+      this.player.x + this.player.width > ball.x &&
+      this.player.y < ball.y + ball.height &&
+      this.player.height + this.player.y > ball.y) {
       
       //! 1. Detener Loop
       this.isGameOn = false;
@@ -79,18 +76,23 @@ class Game {
     this.cleanCanvas();
     // 2. move elements or other actions
     
-    this.balls.ballsMovement();
-    this.ballsCanvasCollision();
-    this.checkPlayerBallCollision();
+    this.ballArr.forEach ((ball) => {
+      ball.ballMovement();
+    this.ballCanvasCollision(ball);
+    this.checkPlayerBallCollision(ball);
+    ball.drawBigBall();
+    })
+    
 
 
     // 3.  Draw los elements
     this.drawBackground();
     this.player.drawPlayer();
-    this.balls.drawBigBalls();
+    
+    
     
     // 4. Animation recursion 
-    requestAnimationFrame(this.gameLoop);
+   requestAnimationFrame(this.gameLoop);
 
 
   }
