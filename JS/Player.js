@@ -10,6 +10,7 @@ class Player  {
     this.img = new Image();
     this.img.src = "./Images/MZ.png"
     this.mzMarginWidth = 40;
+    this.punchArr = [];
   }
 
   // Methods
@@ -20,6 +21,7 @@ class Player  {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
   }
 
+  
   // 2. Movement
   mzMovement = (event) => {
 
@@ -27,6 +29,9 @@ class Player  {
       this.x = this.x + 10
     } else if (event.key === "ArrowLeft" && this.x >= 0 + this.mzMarginWidth) {
       this.x = this.x - 10
+    } else if(event.key === " ") {
+        const newPunch = new Punch(this.x + 30, this.y);
+        this.punchArr.push(newPunch);
     }
     //console.log(event.key);
 

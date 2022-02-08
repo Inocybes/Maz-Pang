@@ -32,5 +32,6 @@ document.addEventListener("keydown", (event) => {
   newGame.player.mzMovement(event);
 });
 
+
 let restart = document.querySelector("#restart-btn");
 restart.addEventListener("click", playAgain);

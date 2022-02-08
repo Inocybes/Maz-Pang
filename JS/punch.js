@@ -1,6 +1,6 @@
 class Punch {
 
-  constructor (x, y ) {
+  constructor (x, y) {
     // properties
     this.x = x;
     this.y = y;
@@ -15,13 +15,14 @@ class Punch {
 
   // 1. Draw
   drawPunch = () => {
-      ctx.drawImage(this.imgPunch, this.x, this.y, this.width, this.height)
+    ctx.drawImage(this.imgPunch, this.x, this.y, this.width, this.height)
   }
 
   // 2. Movement
   
   PunchMovement = () => {
-      this.y = this.y - (1 *this.velocity);
+   
+    this.y = this.y - this.velocity;
   }
   
 }
