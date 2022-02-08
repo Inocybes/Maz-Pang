@@ -6,10 +6,40 @@ class Ball {
     this.y = -20;
     this.directionX = directionX;
     this.directionY = 1;
-    this.width = 50;
-    this.height = 50;
     this.imgBall = new Image();
-    this.imgBall.src = "./Images/brown_ball.png"
+   
+    const type = Math.round(Math.random()*10);
+    switch (type) {
+      case 0:
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+        this.imgBall.src = "./Images/brown_ball.png";
+        this.width = 80;
+        this.height = 80;
+        this.speed = 1;
+        this.score = 200;
+        break;
+      case 6:
+      case 7:
+      case 8:
+        this.imgBall.src = "./Images/bowling-balls.png";
+        this.width = 60;
+        this.height = 60;
+        this.speed = 2;
+        this.score = 300;
+        break;
+        
+      default:
+        this.imgBall.src = "./Images/eyeball.png";
+        this.width = 40;
+        this.height = 40;
+        this.speed = 3;
+        this.score = 800;
+        break;
+      }
   }
 
   // Methods
@@ -31,9 +61,9 @@ class Ball {
   
   ballMovement = () => {
     
-    this.x = this.x + (1 *this.directionX);
+    this.x = this.x + (this.speed *this.directionX);
     
-    this.y = this.y + (1 *this.directionY);
+    this.y = this.y + (this.speed *this.directionY);
     
   }
   

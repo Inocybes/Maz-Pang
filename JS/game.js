@@ -9,6 +9,7 @@ class Game {
     this.ballCollision = 75;
     this.isGameOn = true;
     this.intervalId;
+    this.score = new Score();
   }
 
   drawBackground = () => {
@@ -36,7 +37,7 @@ class Game {
       }
       const newBall = new Ball(x, directionX);
       this.ballArr.push(newBall);
-    }, 8000);
+    }, 7000);
   };
 
   checkPlayerBallCollision = (ball) => {
@@ -61,7 +62,9 @@ class Game {
       punch.y < ball.y + ball.height &&
       punch.height + punch.y > ball.y
     ) {
+      this.score.value = this.score.value + ball.score;
       this.ballArr.splice(ballIndex, 1);
+      
     }
   };
 
@@ -72,7 +75,7 @@ class Game {
   // methods
 
   gameLoop = () => {
-    // 1, Clean canvas
+    // 1. Clean canvas
     this.cleanCanvas();
 
     // 2. move elements or other actions
@@ -80,11 +83,18 @@ class Game {
       ball.ballMovement();
       this.ballCanvasCollision(ball);
       this.checkPlayerBallCollision(ball);
-      this.player.punchArr.forEach((punch) => {
+      this.player.punchArr.forEach((punch, punchIndex) => {
         this.punchCollision(ball, punch, ballIndex);
+        if( punch.y === 0){
+          this.player.punchArr.splice(punchIndex, 1)
+        }
       });
-      return ball;
     });
+
+    this.player.punchArr.forEach((punch) => {
+      punch.PunchMovement();
+    });
+
 
     // va to dentro del forEach porque se crean por parametro
 
@@ -96,10 +106,10 @@ class Game {
     });
 
     this.player.punchArr.forEach((punch) => {
-      punch.PunchMovement();
       punch.drawPunch();
-      return punch;
+    
     });
+    this.score.drawScore();
 
     this.player.drawPlayer();
 

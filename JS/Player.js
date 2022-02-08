@@ -26,9 +26,9 @@ class Player  {
   mzMovement = (event) => {
 
     if (event.key === "ArrowRight" && this.x <= canvas.width - this.width - this.mzMarginWidth) {
-      this.x = this.x + 10
+      this.x = this.x + 9
     } else if (event.key === "ArrowLeft" && this.x >= 0 + this.mzMarginWidth) {
-      this.x = this.x - 10
+      this.x = this.x - 9
     } else if(event.key === " ") {
         const newPunch = new Punch(this.x + 30, this.y);
         this.punchArr.push(newPunch);

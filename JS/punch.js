@@ -4,7 +4,7 @@ class Punch {
     // properties
     this.x = x;
     this.y = y;
-    this.velocity = 1;
+    this.velocity = 3;
     this.width = 30;
     this.height = 30;
     this.imgPunch = new Image();
