@@ -15,6 +15,7 @@ const startGame = () => {
   gameOverScreen.style.display = "none";
 
   newGame = new Game();
+  newGame.spawningBall()
   newGame.gameLoop();
 };
 

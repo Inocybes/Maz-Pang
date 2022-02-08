@@ -9,7 +9,8 @@ class Game {
     this.ballArr = [new Ball((canvas.width/2), 1)]
     this.ballCollision = 75
     this.isGameOn = true;
-    this.punch = []
+    this.punch = [];
+    this.intervalId;
     
   }
 
@@ -20,35 +21,25 @@ class Game {
   ballCanvasCollision = (ball) => {
     if (ball.x > canvas.width - 70) {
       ball.directionX = - 1;
-      
     } else if (ball.y > canvas.height - this.ballCollision) {
       ball.directionY = - 1;
-
     } else if (ball.x < 0 + 15) {
       ball.directionX = 1;
-      
     } else if (ball.y < 0 + 20) {
       ball.directionY = 1;
     }
-  
   }
-
     spawningBall = () => {
-    setInterval (() => { //declarar funcion?
-    const x = Math.random() * (canvas.width - 0)
-    let directionX = Math.random() //* (1 - 0)
+    this.intervalId = setInterval (() => { //necessito un id para cerrar el timer
+    const x = Math.random() * (canvas.width);
+    let directionX = Math.random() //* (1 - 0);
     if (directionX === 0) {
       directionX = -1;
     }
     const newBall = new Ball(x, directionX);
-    this.ballArr.push(newBall)
-    },10000);
+    this.ballArr.push(newBall);
+    },8000);
   }
-  
-
-
-  
-
 
   checkPlayerBallCollision = (ball) => {
     if (this.player.x < ball.x + ball.width &&
@@ -56,10 +47,11 @@ class Game {
       this.player.y < ball.y + ball.height &&
       this.player.height + this.player.y > ball.y) {
       
-      //! 1. Detener Loop
+      //! 1. Stop Loop and clear time interval
       this.isGameOn = false;
       canvas.style.display = "none";
       gameOverScreen.style.display ="flex"
+      clearInterval(this.intervalId);
 
     } 
   }
@@ -74,19 +66,27 @@ class Game {
 
     // 1, Clean canvas
     this.cleanCanvas();
-    // 2. move elements or other actions
     
+    // 2. move elements or other actions
     this.ballArr.forEach ((ball) => {
       ball.ballMovement();
-    this.ballCanvasCollision(ball);
-    this.checkPlayerBallCollision(ball);
-    ball.drawBigBall();
-    })
+      this.ballCanvasCollision(ball);
+      this.checkPlayerBallCollision(ball);
+    });
+    // va to dentro del forEach porque se crean por parametro
     
-
 
     // 3.  Draw los elements
     this.drawBackground();
+    
+    // no me dibuja la bola si lo pongo en movimiento
+
+    this.ballArr.forEach ((ball) => {
+    ball.drawBigBall();
+    })
+    
+    this
+    
     this.player.drawPlayer();
     
     
