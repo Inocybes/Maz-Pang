@@ -8,7 +8,7 @@ class Player  {
     this.width = 100;
     this.height = 100;
     this.img = new Image();
-    this.img.src = "./Images/MZ.png"
+    this.img.src = "./images/MZ.png"
     this.mzMarginWidth = 40;
     this.punchArr = [];
   }

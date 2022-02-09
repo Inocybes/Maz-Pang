@@ -16,7 +16,7 @@ class Ball {
       case 3:
       case 4:
       case 5:
-        this.imgBall.src = "./Images/brown_ball.png";
+        this.imgBall.src = "./images/brown_ball.png";
         this.width = 80;
         this.height = 80;
         this.speed = 1;
@@ -25,7 +25,7 @@ class Ball {
       case 6:
       case 7:
       case 8:
-        this.imgBall.src = "./Images/bowling-balls.png";
+        this.imgBall.src = "./images/bowling-balls.png";
         this.width = 60;
         this.height = 60;
         this.speed = 2;
@@ -33,7 +33,7 @@ class Ball {
         break;
         
       default:
-        this.imgBall.src = "./Images/eyeball.png";
+        this.imgBall.src = "./images/eyeball.png";
         this.width = 40;
         this.height = 40;
         this.speed = 3;

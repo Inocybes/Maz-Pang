@@ -8,7 +8,7 @@ class Punch {
     this.width = 30;
     this.height = 50;
     this.imgPunch = new Image();
-    this.imgPunch.src = "./Images/punch.png"
+    this.imgPunch.src = "./images/punch.png"
   }
 
   // Methods

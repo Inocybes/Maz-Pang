@@ -8,7 +8,7 @@ class Score {
     this.width = 100;
     this.height = 100;
     this.imgScore = new Image()
-    this.imgScore.src = "./Images/brown_ball.png";
+    this.imgScore.src = "./images/brown_ball.png";
   }
 
   drawScore = () => {
