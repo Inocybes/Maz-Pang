@@ -27,9 +27,9 @@ class Game {
       ball.directionY = 1;
     }
   };
-  spawningBall = () => {
+  spawningBall = (frequency) => {
     this.intervalId = setInterval(() => {
-      //necessito un id para cerrar el timer
+      //id close timer
       const x = Math.random() * canvas.width;
       let directionX = Math.random(); //* (1 - 0);
       if (directionX === 0) {
@@ -37,7 +37,11 @@ class Game {
       }
       const newBall = new Ball(x, directionX);
       this.ballArr.push(newBall);
-    }, 7000);
+      if(this.score.value > 10000) {
+        clearInterval(this.intervalId);
+        this.spawningBall(3500)
+      }
+    }, frequency);
   };
 
   checkPlayerBallCollision = (ball) => {
@@ -64,7 +68,9 @@ class Game {
     ) {
       this.score.value = this.score.value + ball.score;
       this.ballArr.splice(ballIndex, 1);
-      
+      return true;
+    } else {
+      return false;
     }
   };
 
@@ -84,9 +90,9 @@ class Game {
       this.ballCanvasCollision(ball);
       this.checkPlayerBallCollision(ball);
       this.player.punchArr.forEach((punch, punchIndex) => {
-        this.punchCollision(ball, punch, ballIndex);
-        if( punch.y === 0){
-          this.player.punchArr.splice(punchIndex, 1)
+        const collision = this.punchCollision(ball, punch, ballIndex);
+        if( punch.y === 0 || collision === true){
+          this.player.punchArr.splice(punchIndex, 1);
         }
       });
     });

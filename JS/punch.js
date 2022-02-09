@@ -6,7 +6,7 @@ class Punch {
     this.y = y;
     this.velocity = 3;
     this.width = 30;
-    this.height = 30;
+    this.height = 50;
     this.imgPunch = new Image();
     this.imgPunch.src = "./Images/punch.png"
   }

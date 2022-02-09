@@ -15,7 +15,7 @@ const startGame = () => {
   gameOverScreen.style.display = "none";
 
   newGame = new Game();
-  newGame.spawningBall()
+  newGame.spawningBall(5000);
   newGame.gameLoop();
 };
 

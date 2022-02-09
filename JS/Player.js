@@ -34,13 +34,5 @@ class Player  {
         this.punchArr.push(newPunch);
     }
     //console.log(event.key);
-
-
-    
-
-
-
   }
-
-
 }
