@@ -42,6 +42,7 @@ class Game {
         this.spawningBall(3500)
       }
     }, frequency);
+    
   };
 
   checkPlayerBallCollision = (ball) => {
@@ -52,19 +53,19 @@ class Game {
       this.player.height + this.player.y > ball.y
     ) {
       
-      finalScore.innerHTML="Final Score: "+this.score.value;
+      finalScore.innerHTML="Final Score: "+ this.score.value;
       this.isGameOn = false;
       canvas.style.display = "none";
       gameOverScreen.style.display = "flex";
       songs.pause();
       songs.src='./sound/game_over.mp3';
-      songs.play();
       songs.loop = false;
+      songs.play();
       clearInterval(this.intervalId);
     }
   };
 
-  createExplosion = () =>{ // <audio id="sound" src="./sound/explosion.mp3"  type="audio/mpeg"></audio>
+  createExplosion = () =>{
     const audio = document.createElement("audio");
     audio.src="./sound/explosion.mp3";
     audio.play();
@@ -133,6 +134,9 @@ class Game {
     this.player.drawPlayer();
 
     // 4. Animation recursion
-    requestAnimationFrame(this.gameLoop);
+    
+    if(this.isGameOn !== false) {
+      requestAnimationFrame(this.gameLoop)
+    }
   };
 }

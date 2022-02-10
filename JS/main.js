@@ -7,15 +7,17 @@ let ctx = canvas.getContext("2d");
 let newGame;
 let songs = document.getElementById("songs");
 let finalScore = document.getElementById("finalScore");
+
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
   songs.play();
-  songs.loop = "I";
+  songs.volume = 0.1
+  songs.loop = true;
   gameIntro.style.display = "none";
   canvas.style.display = "flex";
   gameOverScreen.style.display = "none";
   newGame = new Game();
-  newGame.spawningBall(3500);
+  newGame.spawningBall(5000);
   newGame.gameLoop();
 };
 
