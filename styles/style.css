@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: lightgray;
+  font-family: 'VT323', monospace;
 }
 
 #my-canvas {
@@ -26,4 +27,8 @@ body {
 
 #my-canvas, #gameover-screen {
   display: none;
+}
+
+.finalScore{
+  font-size: 8em;
 }

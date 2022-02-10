@@ -37,7 +37,7 @@ class Game {
       }
       const newBall = new Ball(x, directionX);
       this.ballArr.push(newBall);
-      if(this.score.value > 10000) {
+      if(this.score.value > 5000) {
         clearInterval(this.intervalId);
         this.spawningBall(3500)
       }
@@ -51,13 +51,24 @@ class Game {
       this.player.y < ball.y + ball.height &&
       this.player.height + this.player.y > ball.y
     ) {
-      //! 1. Stop Loop and clear time interval
+      
+      finalScore.innerHTML="Final Score: "+this.score.value;
       this.isGameOn = false;
       canvas.style.display = "none";
       gameOverScreen.style.display = "flex";
+      songs.pause();
+      songs.src='./sound/game_over.mp3';
+      songs.play();
+      songs.loop = false;
       clearInterval(this.intervalId);
     }
   };
+
+  createExplosion = () =>{ // <audio id="sound" src="./sound/explosion.mp3"  type="audio/mpeg"></audio>
+    const audio = document.createElement("audio");
+    audio.src="./sound/explosion.mp3";
+    audio.play();
+  }
 
   punchCollision = (ball, punch, ballIndex) => {
     if (
@@ -68,6 +79,8 @@ class Game {
     ) {
       this.score.value = this.score.value + ball.score;
       this.ballArr.splice(ballIndex, 1);
+      this.soundsId++;
+      this.createExplosion();
       return true;
     } else {
       return false;

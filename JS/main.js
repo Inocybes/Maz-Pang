@@ -5,17 +5,17 @@ let gameOverScreen = document.querySelector("#gameover-screen");
 let canvas = document.querySelector("#my-canvas");
 let ctx = canvas.getContext("2d");
 let newGame;
-
+let songs = document.getElementById("songs");
+let finalScore = document.getElementById("finalScore");
 // * STATE MANAGEMENT FUNCTIONS
-
 const startGame = () => {
-
+  songs.play();
+  songs.loop = "I";
   gameIntro.style.display = "none";
   canvas.style.display = "flex";
   gameOverScreen.style.display = "none";
-
   newGame = new Game();
-  newGame.spawningBall(5000);
+  newGame.spawningBall(3500);
   newGame.gameLoop();
 };
 

@@ -19,7 +19,7 @@ class Ball {
         this.imgBall.src = "./images/brown_ball.png";
         this.width = 80;
         this.height = 80;
-        this.speed = 1;
+        this.speed = 3;
         this.score = 200;
         break;
       case 6:
@@ -28,17 +28,19 @@ class Ball {
         this.imgBall.src = "./images/bowling-balls.png";
         this.width = 60;
         this.height = 60;
-        this.speed = 2;
+        this.speed = 3;
         this.score = 300;
         break;
         
-      default:
+      case 9:
+      case 10:
         this.imgBall.src = "./images/eyeball.png";
         this.width = 40;
         this.height = 40;
         this.speed = 3;
         this.score = 800;
         break;
+      
       }
   }
 

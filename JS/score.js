@@ -7,12 +7,10 @@ class Score {
     this.y = 0;
     this.width = 100;
     this.height = 100;
-    this.imgScore = new Image()
-    this.imgScore.src = "./images/brown_ball.png";
   }
 
   drawScore = () => {
-    ctx.font = "30px Georgia";
+    ctx.font = "30px VT323";
     ctx.fillStyle= "Gold"
     ctx.fillText(`SCORE: ${this.value}`, 20, 50);
   }
