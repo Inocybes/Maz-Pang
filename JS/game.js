@@ -37,9 +37,10 @@ class Game {
       }
       const newBall = new Ball(x, directionX);
       this.ballArr.push(newBall);
-      if (this.score.value > 5000) {
+      if (frequency >= 1000) {  //this.score.value > 3000
         clearInterval(this.intervalId);
-        this.spawningBall(3500);
+        this.spawningBall(frequency - 100);
+        console.log(frequency);
       }
     }, frequency);
   };

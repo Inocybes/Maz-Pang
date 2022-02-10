@@ -16,8 +16,8 @@ class Ball {
       case 4:
       case 5:
         this.imgBall.src = "./images/brown_ball.png";
-        this.width = 80;
-        this.height = 80;
+        this.width = 70;
+        this.height = 70;
         this.speed = 2;
         this.score = 200;
         break;
@@ -47,13 +47,6 @@ class Ball {
   // 1. Draw
   drawBigBall = () => {
     ctx.drawImage(this.imgBall, this.x, this.y, this.width, this.height);
-
-    // ctx.beginPath()
-    // ctx.fillStyle = "blue"
-    // ctx.arc(this.X, this.Y, 50, 0, 2 * Math.PI )
-    // ctx.fill()
-    // ctx.stroke()
-    // ctx.closePath()
   };
 
   // 2. Movement

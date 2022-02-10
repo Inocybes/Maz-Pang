@@ -4,7 +4,7 @@ class Player {
 
     this.x = canvas.width / 2;
     this.y = canvas.height - 125;
-    this.width = 100;
+    this.width = 80;
     this.height = 100;
     this.img = new Image();
     this.img.src = "./images/MZ.png";
@@ -25,9 +25,9 @@ class Player {
       event.key === "ArrowRight" &&
       this.x <= canvas.width - this.width - this.mzMarginWidth
     ) {
-      this.x = this.x + 9;
+      this.x = this.x + 10;
     } else if (event.key === "ArrowLeft" && this.x >= 0 + this.mzMarginWidth) {
-      this.x = this.x - 9;
+      this.x = this.x - 10;
     } else if (event.key === " ") {
       const newPunch = new Punch(this.x + 30, this.y);
       this.punchArr.push(newPunch);
