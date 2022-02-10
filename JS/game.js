@@ -37,12 +37,11 @@ class Game {
       }
       const newBall = new Ball(x, directionX);
       this.ballArr.push(newBall);
-      if(this.score.value > 5000) {
+      if (this.score.value > 5000) {
         clearInterval(this.intervalId);
-        this.spawningBall(3500)
+        this.spawningBall(3500);
       }
     }, frequency);
-    
   };
 
   checkPlayerBallCollision = (ball) => {
@@ -52,24 +51,25 @@ class Game {
       this.player.y < ball.y + ball.height &&
       this.player.height + this.player.y > ball.y
     ) {
-      
-      finalScore.innerHTML="Final Score: "+ this.score.value;
+      finalScore.innerHTML = "Final Score: " + this.score.value;
       this.isGameOn = false;
       canvas.style.display = "none";
       gameOverScreen.style.display = "flex";
       songs.pause();
-      songs.src='./sound/game_over.mp3';
+      songs.src = "./sound/game_over.mp3";
       songs.loop = false;
       songs.play();
+      songs.volume = 0.1;
       clearInterval(this.intervalId);
     }
   };
 
-  createExplosion = () =>{
-    const audio = document.createElement("audio");
-    audio.src="./sound/explosion.mp3";
+  createExplosion = () => {
+    let audio = document.createElement("audio");
+    audio.src = "./sound/explosion.mp3";
     audio.play();
-  }
+    audio.volume = 0.1;
+  };
 
   punchCollision = (ball, punch, ballIndex) => {
     if (
@@ -105,7 +105,7 @@ class Game {
       this.checkPlayerBallCollision(ball);
       this.player.punchArr.forEach((punch, punchIndex) => {
         const collision = this.punchCollision(ball, punch, ballIndex);
-        if( punch.y === 0 || collision === true){
+        if (punch.y === 0 || collision === true) {
           this.player.punchArr.splice(punchIndex, 1);
         }
       });
@@ -114,7 +114,6 @@ class Game {
     this.player.punchArr.forEach((punch) => {
       punch.PunchMovement();
     });
-
 
     // va to dentro del forEach porque se crean por parametro
 
@@ -127,16 +126,15 @@ class Game {
 
     this.player.punchArr.forEach((punch) => {
       punch.drawPunch();
-    
     });
     this.score.drawScore();
 
     this.player.drawPlayer();
 
     // 4. Animation recursion
-    
-    if(this.isGameOn !== false) {
-      requestAnimationFrame(this.gameLoop)
+
+    if (this.isGameOn !== false) {
+      requestAnimationFrame(this.gameLoop);
     }
   };
 }

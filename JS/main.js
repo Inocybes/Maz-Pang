@@ -11,13 +11,13 @@ let finalScore = document.getElementById("finalScore");
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
   songs.play();
-  songs.volume = 0.1
+  songs.volume = 0.1;
   songs.loop = true;
   gameIntro.style.display = "none";
   canvas.style.display = "flex";
   gameOverScreen.style.display = "none";
   newGame = new Game();
-  newGame.spawningBall(5000);
+  newGame.spawningBall(4000);
   newGame.gameLoop();
 };
 
@@ -33,7 +33,6 @@ startButton.addEventListener("click", startGame);
 document.addEventListener("keydown", (event) => {
   newGame.player.mzMovement(event);
 });
-
 
 let restart = document.querySelector("#restart-btn");
 restart.addEventListener("click", playAgain);
