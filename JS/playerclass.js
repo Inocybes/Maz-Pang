@@ -32,6 +32,6 @@ class Player {
       const newPunch = new Punch(this.x + 30, this.y);
       this.punchArr.push(newPunch);
     }
-    //console.log(event.key);
+    
   };
 }

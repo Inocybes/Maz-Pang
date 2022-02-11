@@ -29,9 +29,9 @@ class Game {
   };
   spawningBall = (frequency) => {
     this.intervalId = setInterval(() => {
-      //id close timer
+      
       const x = Math.random() * canvas.width;
-      let directionX = Math.random(); //* (1 - 0);
+      let directionX = Math.random();
       if (directionX === 0) {
         directionX = -1;
       }
@@ -39,7 +39,7 @@ class Game {
       this.ballArr.push(newBall);
       if (frequency >= 1000) {  //this.score.value > 3000
         clearInterval(this.intervalId);
-        this.spawningBall(frequency - 100);
+        this.spawningBall(frequency - 300);
         console.log(frequency);
       }
     }, frequency);
@@ -56,6 +56,8 @@ class Game {
       this.isGameOn = false;
       canvas.style.display = "none";
       gameOverScreen.style.display = "flex";
+      
+      // Music
       songs.pause();
       songs.src = "./sound/game_over.mp3";
       songs.loop = false;
@@ -115,8 +117,6 @@ class Game {
     this.player.punchArr.forEach((punch) => {
       punch.PunchMovement();
     });
-
-    // va to dentro del forEach porque se crean por parametro
 
     // 3.  Draw los elements
     this.drawBackground();

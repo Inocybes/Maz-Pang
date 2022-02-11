@@ -6,7 +6,8 @@ class Ball {
     this.directionX = directionX;
     this.directionY = 1;
     this.imgBall = new Image();
-
+   
+    // spawning balls
     const type = Math.round(Math.random() * 10);
     switch (type) {
       case 0:
@@ -53,7 +54,6 @@ class Ball {
 
   ballMovement = () => {
     this.x = this.x + this.speed * this.directionX;
-
     this.y = this.y + this.speed * this.directionY;
   };
 }
